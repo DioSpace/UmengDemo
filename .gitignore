@@ -2,5 +2,5 @@ Podfile.lock
 /Pods
 .DS_Store
 /UmengDemo.xcworkspace
-UmengDemo.xcodeproj/UmengDemo.xcodeproj
 UmengDemo.xcodeproj/project.pbxproj
+UmengDemo.xcodeproj/xcuserdata/
