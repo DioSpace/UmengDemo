@@ -11,7 +11,7 @@
 #import <UMAnalytics/MobClick.h>
 #import <UMPush/UMessage.h>
 
-#define umengKey @"5cd40ace4ca3571049000572"
+#define umengKey @"5d09ccf34ca3576797000d96"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -58,6 +58,8 @@
     NSString *tokenStr = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
                            stringByReplacingOccurrencesOfString: @">" withString: @""]
                           stringByReplacingOccurrencesOfString: @" " withString: @""];
+    //f0099a8c2ff8f33e58a0bbc8911253d62114419978ab571abdef33f20161921d
+    NSLog(@"%@",deviceToken);
     NSLog(@"deviceToken:%@",tokenStr);
 }
 
