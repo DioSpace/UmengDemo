@@ -54,13 +54,24 @@
 }
 #pragma 获取device token 然后在友盟官网添加测试设备(注:不添加测试设备,就一直收不到消息)
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    [UMessage registerDeviceToken:deviceToken];
-    NSString *tokenStr = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
-                           stringByReplacingOccurrencesOfString: @">" withString: @""]
-                          stringByReplacingOccurrencesOfString: @" " withString: @""];
-    //f0099a8c2ff8f33e58a0bbc8911253d62114419978ab571abdef33f20161921d
-    NSLog(@"%@",deviceToken);
-    NSLog(@"deviceToken:%@",tokenStr);
+    if (!deviceToken || ![deviceToken isKindOfClass:[NSData class]] || deviceToken.length==0) {
+        return;
+    }
+    
+    if (@available(iOS 13.0, *)) {
+        const unsigned *tokenBytes = (const unsigned *)[deviceToken bytes];
+        NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
+                              ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
+                              ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
+                              ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+        NSLog(@"deviceToken11:%@",hexToken);
+    } else {
+        [UMessage registerDeviceToken:deviceToken];
+        NSString *tokenStr = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                               stringByReplacingOccurrencesOfString: @">" withString: @""]
+                              stringByReplacingOccurrencesOfString: @" " withString: @""];
+        NSLog(@"deviceToken22:%@",tokenStr);
+    }
 }
 
 //umeng iOS10以下使用这两个方法接收通知，

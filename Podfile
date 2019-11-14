@@ -6,9 +6,9 @@ target 'UmengDemo' do
   use_frameworks!
   
   # Pods for UmengDemo
-  pod 'UMCCommon', '~> 2.0.1'
-  pod 'UMCSecurityPlugins', '~> 1.0.6'
-  pod 'UMCAnalytics', '~> 6.0.3' # 统计
-  pod 'UMCPush', '~> 3.2.4' # push
+  pod 'UMCCommon', '2.1.1'
+  pod 'UMCSecurityPlugins', '1.0.6'
+  pod 'UMCAnalytics', '6.0.3' # 统计
+  pod 'UMCPush', '3.2.4' # push
   
 end
